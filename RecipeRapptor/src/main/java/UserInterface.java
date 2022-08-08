@@ -21,30 +21,37 @@ public class UserInterface {
         System.out.println("find cooking time - searches recipes by cooking time");
         System.out.println("find ingredient - searches recipes by ingredient");
 
+        OUTER:
         while (true) {
             System.out.println("\nEnter command : ");
             String command = scanner.nextLine();
-            if (command.equals("stop")) {
-                break;
-            } else if (command.equals("list")) {
-                this.recipes.printRecipes();
-            } else if (command.equals("find name")) {
-                System.out.println("Searched word: ");
-                command = scanner.nextLine();
-                System.out.println("\nRecipes: ");
-                this.recipes.findByName(command);
-            } else if (command.equals("find cooking time")) {
-                System.out.println("Max cooking time: ");
-                command = scanner.nextLine();
-                System.out.println("\nRecipes: ");
-                this.recipes.findByTime(Integer.valueOf(command));
-            } else if (command.equals("find ingredient")) {
-                System.out.println("Ingredient: ");
-                command = scanner.nextLine();
-                System.out.println("\nRecipes: ");
-                this.recipes.findByIngredients(command);
+            switch (command) {
+                case "stop":
+                    break OUTER;
+                case "list":
+                    this.recipes.printRecipes();
+                    break;
+                case "find name":
+                    System.out.println("Searched word: ");
+                    command = scanner.nextLine();
+                    System.out.println("\nRecipes: ");
+                    this.recipes.findByName(command);
+                    break;
+                case "find cooking time":
+                    System.out.println("Max cooking time: ");
+                    command = scanner.nextLine();
+                    System.out.println("\nRecipes: ");
+                    this.recipes.findByTime(Integer.valueOf(command));
+                    break;
+                case "find ingredient":
+                    System.out.println("Ingredient: ");
+                    command = scanner.nextLine();
+                    System.out.println("\nRecipes: ");
+                    this.recipes.findByIngredients(command);
+                    break;
+                default:
+                    break;
             }
-
         }
     }
 
