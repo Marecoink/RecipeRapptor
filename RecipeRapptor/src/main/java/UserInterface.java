@@ -13,17 +13,12 @@ public class UserInterface {
 
     public void start() {
         System.out.println("File to read: ");
-        this.recipes.fileToRecipe(scanner.nextLine());
-        System.out.println("Commands:");
-        System.out.println("list - lists the recipes");
-        System.out.println("stop - stops the program");
-        System.out.println("find name - searches recipes by name");
-        System.out.println("find cooking time - searches recipes by cooking time");
-        System.out.println("find ingredient - searches recipes by ingredient");
+        this.recipes.fileToRecipe();
+        commandList();
 
         OUTER:
         while (true) {
-            System.out.println("\nEnter command : ");
+            System.out.println("\nEnter command (type \"cmd\" for the list of available commands): ");
             String command = scanner.nextLine();
             switch (command) {
                 case "stop":
@@ -49,10 +44,29 @@ public class UserInterface {
                     System.out.println("\nRecipes: ");
                     this.recipes.findByIngredients(command);
                     break;
+                    //test
+                case "add recipe":
+                    this.recipes.addRecipeToFile();
+                    this.recipes.fileToRecipe();
+                    break;
+                    //test
+                case "cmd":
+                    commandList();
+                    break;
                 default:
                     break;
             }
         }
+    }
+
+    public void commandList() {
+        System.out.println("Commands:");
+        System.out.println("list - lists the recipes");
+        System.out.println("stop - stops the program");
+        System.out.println("find name - searches recipes by name");
+        System.out.println("find cooking time - searches recipes by cooking time");
+        System.out.println("find ingredient - searches recipes by ingredient");
+        System.out.println("add recipe - adds new recipe to the file");
     }
 
 }

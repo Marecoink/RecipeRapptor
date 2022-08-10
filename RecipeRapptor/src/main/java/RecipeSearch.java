@@ -10,7 +10,7 @@ public class RecipeSearch {
         Scanner scanner = new Scanner(System.in);
         UserInterface loadUI = new UserInterface();
         loadUI.start();
-
+        
         // System.out.println("test koniec");
         /* System.out.println(recipes.getRecipe(0));
         for (int i=0;i<3; i++)
